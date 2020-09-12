@@ -48,14 +48,14 @@ int leds[] = {LED_LAND, LED_FLY, LED_SLOW, LED_FAST, LED_PLANET_0, LED_PLANET_1,
 int n_led = 9;              
 
 // joystick calibration
-int min_left_right = MIN_LEFT_RIGHT;
-int max_left_right = MAX_LEFT_RIGHT;
-int min_forw_back = MIN_FORW_BACK;
-int max_forw_back = MAX_FORW_BACK;
-int min_up_down = MIN_UP_DOWN;
-int max_up_down = MAX_UP_DOWN;
-int min_yaw = MIN_YAW;
-int max_yaw = MAX_YAW;
+//int min_left_right = MIN_LEFT_RIGHT;
+//int max_left_right = MAX_LEFT_RIGHT;
+//int min_forw_back = MIN_FORW_BACK;
+//int max_forw_back = MAX_FORW_BACK;
+//int min_up_down = MIN_UP_DOWN;
+//int max_up_down = MAX_UP_DOWN;
+//int min_yaw = MIN_YAW;
+//int max_yaw = MAX_YAW;
 
 // armed?
 boolean armed = false;
