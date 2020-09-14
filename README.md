@@ -1,5 +1,5 @@
 # tello-remote
-A remote controller for the Tello drone based on the ESP32
+A remote controller for the Tello drone based on the ESP32. A video on this can be found on [YouTube](https://youtu.be/NZ7PIbjot90).
 
 ## The Hardware
 
