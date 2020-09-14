@@ -44,7 +44,7 @@ int left_right, forw_back, up_down, yaw;
 char packetBuffer[255];
 
 // all LED pins
-int leds[] = {LED_LAND, LED_FLY, LED_SLOW, LED_FAST, LED_PLANET_0, LED_PLANET_1, LED_POWER, LED_DISARM, LED_ARM};
+int leds[] = {LED_LAND, LED_FLY, LED_SLOW, LED_FAST, LED_PLANET_0, LED_PLANET_2, LED_POWER, LED_DISARM, LED_ARM};
 int n_led = 9;              
 
 // joystick calibration
@@ -69,27 +69,30 @@ void setup(){
 
     // initialize PINS
     initPins();
-
-    Serial.println("LED test");
-    for (int i=0; i<n_led; i++) 
-        digitalWrite(leds[i], LOW);
-    for (int n=0; n<3; n++) {
-        for (int i=0; i<n_led; i++) {
-            digitalWrite(leds[i], HIGH);
-            delay(50);
-        }
-        delay(500);
-        for (int i=0; i<n_led; i++) {
-            digitalWrite(leds[i], LOW);
-            delay(50);
-        }
-        delay(500);
-    }
-
-    // set correct LEDs
+    
     arm = digitalRead(SW_ARM) == 0; 
     fly = digitalRead(SW_FLY) == 0 ;
     fast = digitalRead(SW_FAST) == 0;
+
+    if (!fast) {
+        Serial.println("LED test");
+        for (int i=0; i<n_led; i++) 
+            digitalWrite(leds[i], LOW);
+        for (int n=0; n<3; n++) {
+            for (int i=0; i<n_led; i++) {
+                digitalWrite(leds[i], HIGH);
+                delay(50);
+            }
+            delay(500);
+            for (int i=0; i<n_led; i++) {
+                digitalWrite(leds[i], LOW);
+                delay(50);
+            }
+            delay(500);
+        }
+    }
+
+    // set correct LEDs
     if (arm) digitalWrite(LED_ARM, HIGH); 
     else digitalWrite(LED_DISARM, HIGH);
     if (fly) digitalWrite(LED_FLY, HIGH); 
@@ -208,8 +211,12 @@ void loop(){
         forw_back = normalize(forw_back, min_forw_back, max_forw_back) * (-1);
         up_down = normalize(up_down, min_up_down, max_up_down) * (-1);
         yaw = normalize(yaw, min_yaw, max_yaw);
-        //delay(700);
-        //Serial.printf("%d, %d, %d, %d\n", left_right, forw_back, up_down, yaw); 
+    
+        if (fast) {
+            Serial.printf("%d, %d, %d, %d\n", left_right, forw_back, up_down, yaw);
+            delay(300);
+        }
+
         rc(left_right, forw_back, up_down, yaw); 
     }
 
@@ -325,7 +332,7 @@ void land() {
 }
 
 void rc(int l_left_right, int l_forw_back, int l_up_down, int l_yaw) {
-    char cmd[23];   // rc -100 -100 -100 -100 
+    char cmd[50];   // rc -100 -100 -100 -100 
     sprintf(cmd, "rc %d %d %d %d", l_left_right, l_forw_back, l_up_down, l_yaw);
     telloCommand(cmd);
 }
