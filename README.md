@@ -9,3 +9,7 @@ Everything is controlled by a NODEMCU ESP32 development board. I've attached 10 
 Three inputs come from a (PicoPlanet by Bleeptrack)[https://www.tindie.com/products/bleeptrack/picoplanet/]. But you could also use buttons or switches instead. 
 
 I'm powering the device with four AA batteries connected to GND and 5V on the ESP. The board should be able to regulate any voltage up to 12V. 
+
+## The Software
+
+Check out the ESP32 sketch. It is flashed to the controller through the Arduino IDE. 
