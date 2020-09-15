@@ -13,3 +13,9 @@ I'm powering the device with four AA batteries connected to GND and 5V on the ES
 ## The Software
 
 Check out the ESP32 sketch. It is flashed to the controller through the Arduino IDE. 
+
+## Resources
+
+During the creation of this project, I mainly used the forum and wiki from https://tellopilots.com/ as well as the [Tello SDK 1.3 documentation](https://terra-1-g.djicdn.com/2d4dce68897a46b19fc717f3576b7c6a/Tello%20%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/For%20Tello/Tello%20SDK%20Documentation%20EN_1.3_1122.pdf). 
+
+There's also already projects online that implement Tello commands on an ESP32, such as https://github.com/anoochit/tello-esp32 and https://github.com/flexlab-ruc/ESP32-TelloDrone. 
